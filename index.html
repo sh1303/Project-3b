@@ -59,48 +59,83 @@
 </head>
 <body>
   <h1>Raytracer Project 3B – Final Results</h1>
-  <p style="text-align:center;">By Samra Huseynova | CSCI 5607 – Fall 2025</p>
-
-  <p style="text-align:center;font-size:1.1em;">
-    🔗 View full project on GitHub: 
-    <a href="https://github.com/sh1303/Project3-b" target="_blank">
-      https://github.com/sh1303/Project3-b
-    </a>
-  </p>
-
   <p style="text-align:center;">
-    📁 <a class="btn" href="https://drive.google.com/file/d/1NHfzP8qqYUoJ5Yi7CRR13vB6c_5g-H2h/view?usp=sharing" target="_blank">
+    📁 <a class="btn" href="https://drive.google.com/file/d/1typc3rC3I9nSnfQsQLYaimNcHPnFqbuZ/view?usp=sharing" target="_blank">
       Download Project Files (Google Drive)
     </a>
   </p>
 
   <div class="section">
-    <h2>📘 Overview</h2>
-    <p>
-      This project extends my ray tracer to support <strong>arbitrary camera placement, complex geometry, realistic materials, and lighting models</strong>.  
-      It features recursive ray tracing with reflection and refraction, various sampling techniques, and detailed lighting controls.
-    </p>
+    <h2>Overview</h2>
+<section id="Implementation" class="section">
+  <p>
+    This project extends my ray tracer to support inclusion of triangles, planes, complex lighting, and optical properties of materials. 
+    The main idea was to simulate how light travels in a scene and how it interacts with different surfaces to produce realistic images.
+  </p>
+  <p>
+    I started by setting up a virtual camera that shoots rays through every pixel of the image. Each ray checks if it hits an object — 
+    like a sphere, triangle, or plane — and then calculates what color that point should be based on the lights and materials in the scene.
+  </p>
+  <p>
+    I used the Phong lighting model to handle how light affects the objects. That means every surface gets some ambient light (overall brightness), 
+    diffuse light (how light spreads depending on the angle), and specular light (the shiny reflections you see on glossy materials).
+  </p>
+  <p>
+    I also added different types of lights to the renderer — point lights, directional lights (like sunlight), and spotlights that create 
+    focused beams. Shadows were tricky, but I managed them by casting extra “shadow rays” from each surface point toward the lights 
+    to see if something blocks the light.
+  </p>
+  <p>
+    For reflective materials, I implemented recursive reflections, so when a ray hits a shiny surface, it spawns another ray in the 
+    reflection direction. This makes mirrors and glossy effects look realistic, but I had to set a maximum recursion depth to stop 
+    it from bouncing forever. But I failed to implement refraction part of the project. 
+  </p>
+  <p>
+    To make the images smoother and reduce jagged edges, I implemented two sampling methods:
+    <br><strong>Jittered sampling</strong>, which adds a bit of randomness to each ray so edges look smoother.
+    <br><strong>Adaptive sampling</strong>, which adds more samples in areas where there’s a lot of color or brightness change.
+  </p>
+  <p>
+    I also attempted to implement motion blur and depth of field,but couldn't get good results. The main challenge I faced was related to building good lighting model and
+    implementation of optical properties of materials. 
+  </p>
+  <p>
+    At the end, I used the <strong>stb_image</strong> library to save all the final renders as PNG files. 
+    I also added timing code using C++’s <strong>chrono</strong> library to measure how long each render took.
+  </p>
+</section>
+
   </div>
 
   <div class="section">
-    <h2>🎥 Arbitrary Camera Placement, Film Resolution & Aspect Ratio</h2>
-    <p>The <strong>bear</strong> series explores different camera angles and aspect ratios.</p>
+    <h2>Arbitrary Camera Placement, Film Resolution & Aspect Ratio</h2>
+    <p>The below images explores effect of different camera placements, resolutions and aspect ratios.</p>
     <div class="gallery">
-      <div class="item"><img src="images/bear.png"></div>
+      <div class="item"><img src="images/bear.png">
+        <p><strong>Original image</strong></p>
+      </div>
       <div class="item"><img src="images/bear2.png"></div>
       <div class="item"><img src="images/bear3.png"></div>
       <div class="item"><img src="images/bear4.png"></div>
-      <div class="item"><img src="images/bear5.png"></div>
-      <div class="item"><img src="images/bear6.png"></div>
-      <div class="item"><img src="images/bear7.png"></div>
+      <div class="item"><img src="images/bear5.png"> 
+        <p><strong>Resolution: 600:400</strong></p>
+      </div>
+      <div class="item"><img src="images/bear6.png">
+        <p><strong>Resolution: 1024:768</strong></p>
+      </div>
+      <div class="item"><img src="images/bear7.png">
+        <p><strong>Resolution: 1920:1080</strong></p>
+      </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🌄 Arbitrary Scenes – Spheres, Triangles & Backgrounds</h2>
-    <p>Rendered <strong>outdoor</strong> scenes with mixed primitives and color gradients.</p>
+    <h2>Arbitrary Scenes – Spheres, Triangles & Background color change</h2>
+    <p>Rendered scenes with mixed shapes, colors and materials.</p>
     <div class="gallery">
-      <div class="item"><img src="images/outdoor.png"></div>
+      <div class="item"><img src="images/outdoor.png">
+        <p><strong>Original image</strong></p>
+      </div>
       <div class="item"><img src="images/outdoor1.png"></div>
       <div class="item"><img src="images/outdoor2.png"></div>
       <div class="item"><img src="images/outdoor4.png"></div>
@@ -110,8 +145,8 @@
   </div>
 
   <div class="section">
-    <h2>🎨 Materials – Diffuse, Specular, Reflection & Refraction</h2>
-    <p>The <strong>foo</strong> renders demonstrate material variety and optical properties.</p>
+    <h2> Materials – Diffuse, Specularand Reflection</h2>
+    <p>The images demonstrate material variety and optical properties.</p>
     <div class="gallery">
       <div class="item"><img src="images/foo.png"></div>
       <div class="item"><img src="images/foo1.png"></div>
@@ -120,49 +155,72 @@
   </div>
 
   <div class="section">
-    <h2>💡 Point, Directional & Ambient Lighting</h2>
+    <h2> Point, Directional & Ambient Lighting</h2>
     <div class="gallery">
-      <div class="item"><img src="images/spot.png"></div>
-      <div class="item"><img src="images/spot2.png"></div>
+      <div class="item"><img src="images/spot.png">
+        <p><strong>Original image with just spotlight</strong></p>
+      </div>
+      <div class="item"><img src="images/spot2.png">
+        <p><strong>Image with directional, spot, point and ambient lighting</strong></p>
+      </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🪶 Plane & Contrast Test</h2>
+    <h2>Plane generation</h2>
     <div class="gallery">
       <div class="item"><img src="images/plane_contrast.png"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🎯 Sampling Techniques & Render Time</h2>
+    <h2>Sampling Techniques & Render Time</h2>
     <div class="gallery">
-      <div class="item"><img src="images/no_sampling.png" alt="No Sampling"></div>
-      <div class="item"><img src="images/sampling_jitter.png" alt="Jitter Sampling"></div>
-      <div class="item"><img src="images/sampling_adaptive.png" alt="Adaptive Sampling"></div>
-      <div class="item"><img src="images/jitter_sampling_time.png" alt="Jitter Sampling Time"></div>
-      <div class="item"><img src="images/adaptive_time.png" alt="Adaptive Sampling Time"></div>
+      <div class="item"><img src="images/no_sampling.png" alt="No Sampling">
+        <p><strong>Original image with no sampling</strong></p>
+      </div>
+      <div class="item"><img src="images/sampling_jitter.png" alt="Jitter Sampling">
+        <p><strong>Jittered supersampling</strong></p>
+      </div>
+      <div class="item"><img src="images/sampling_adaptive.png" alt="Adaptive Sampling">
+        <p><strong>Adaptive sampling</strong></p>
+      </div>
+      <div class="item"><img src="images/jitter_sampling_time.png" alt="Jitter Sampling Time">
+        <p><strong>Jittered supersampling render time (slower than adaptive)</strong></p>
+      </div>
+      <div class="item"><img src="images/adaptive_time.png" alt="Adaptive Sampling Time">
+        <p><strong>Adaptive sampling render time</strong></p>
+      </div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🐉 Complex Scene – Dragon</h2>
+    <h2>Complex Scene Rendering– Dragon</h2>
     <div class="gallery">
       <div class="item"><img src="images/dragon.png"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🌀 Recursive Depth Control</h2>
-    <p>The <strong>spheres</strong> renders illustrate how max recursion depth affects realism.</p>
+    <h2>Recursive Depth Control</h2>
+    <p>The <strong>spheres</strong> renders illustrate how max recursion depth affects realism.As we decrease the depth, we stop tracing the ray earlier, which eliminates the 
+    effect of reflections and refractions in the scene.</p>
     <div class="gallery">
       <div class="item"><img src="images/spheres1.png"></div>
       <div class="item"><img src="images/spheres2.png"></div>
     </div>
+    
+  </div>
+    <div class="section">
+    <h2>Late submission</h2>
+    <p>Unfortunately, I couldn't submit project on time. I wanted to spare some time for Halloween and make fun memories with friends. Here is me as Lara Croft. :) </p>
+    <div class="gallery">
+      <div class="item"><img src="images/IMG_1208.PNG"></div>
+    </div>
   </div>
 
   <footer>
-    <p>© 2025 Samra Huseynova | University of Minnesota – College of Science & Engineering</p>
+    <p>Samra Huseynova | University of Minnesota – College of Science & Engineering</p>
   </footer>
 </body>
 </html>
