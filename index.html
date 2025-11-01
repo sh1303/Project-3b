@@ -12,9 +12,7 @@
       margin: 40px;
       line-height: 1.6;
     }
-    h1, h2, h3 {
-      text-align: center;
-    }
+    h1, h2, h3 { text-align: center; }
     h1 { margin-bottom: 10px; }
     .section {
       max-width: 1000px;
@@ -79,113 +77,87 @@
   <div class="section">
     <h2>📘 Overview</h2>
     <p>
-      This project extends the previous ray tracer by supporting <strong>arbitrary camera placement, complex geometry, and physically based materials</strong>.  
-      Additional features include <em>point, directional, and ambient lighting</em>; sampling techniques such as jittered and adaptive supersampling; and recursive ray tracing with reflection, refraction, and depth control.  
-      Each section below highlights a specific component of the system, illustrated with the rendered outputs.
+      This project extends my ray tracer to support <strong>arbitrary camera placement, complex geometry, realistic materials, and lighting models</strong>.  
+      It features recursive ray tracing with reflection and refraction, various sampling techniques, and detailed lighting controls.
     </p>
   </div>
 
   <div class="section">
     <h2>🎥 Arbitrary Camera Placement, Film Resolution & Aspect Ratio</h2>
-    <p>
-      The <strong>bear series</strong> explores different camera positions, aspect ratios, and film resolutions.  
-      Small changes in camera orientation significantly affect perspective and scene composition.
-    </p>
+    <p>The <strong>bear</strong> series explores different camera angles and aspect ratios.</p>
     <div class="gallery">
-      <div class="item"><img src="bear.png" alt="Bear scene 1"></div>
-      <div class="item"><img src="bear2.png" alt="Bear scene 2"></div>
-      <div class="item"><img src="bear3.png" alt="Bear scene 3"></div>
-      <div class="item"><img src="bear4.png" alt="Bear scene 4"></div>
-      <div class="item"><img src="bear5.png" alt="Bear scene 5"></div>
-      <div class="item"><img src="bear6.png" alt="Bear scene 6"></div>
-      <div class="item"><img src="bear7.png" alt="Bear scene 7"></div>
-      <div class="item"><img src="IMG_1208.PNG" alt="Bear photograph reference"></div>
+      <div class="item"><img src="images/bear.png"></div>
+      <div class="item"><img src="images/bear2.png"></div>
+      <div class="item"><img src="images/bear3.png"></div>
+      <div class="item"><img src="images/bear4.png"></div>
+      <div class="item"><img src="images/bear5.png"></div>
+      <div class="item"><img src="images/bear6.png"></div>
+      <div class="item"><img src="images/bear7.png"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🌄 Arbitrary Scenes with Spheres and Triangles</h2>
-    <p>
-      The <strong>outdoor renders</strong> demonstrate scenes containing both spheres and triangle meshes, using custom background colors and multiple geometric primitives.
-    </p>
+    <h2>🌄 Arbitrary Scenes – Spheres, Triangles & Backgrounds</h2>
+    <p>Rendered <strong>outdoor</strong> scenes with mixed primitives and color gradients.</p>
     <div class="gallery">
-      <div class="item"><img src="outdoor.png" alt="Outdoor scene 1"></div>
-      <div class="item"><img src="outdoor1.png" alt="Outdoor scene 2"></div>
-      <div class="item"><img src="outdoor2.png" alt="Outdoor scene 3"></div>
-      <div class="item"><img src="outdoor4.png" alt="Outdoor scene 4"></div>
-      <div class="item"><img src="outdoor5.png" alt="Outdoor scene 5"></div>
-      <div class="item"><img src="outdoor6.png" alt="Outdoor scene 6"></div>
+      <div class="item"><img src="images/outdoor.png"></div>
+      <div class="item"><img src="images/outdoor1.png"></div>
+      <div class="item"><img src="images/outdoor2.png"></div>
+      <div class="item"><img src="images/outdoor4.png"></div>
+      <div class="item"><img src="images/outdoor5.png"></div>
+      <div class="item"><img src="images/outdoor6.png"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🎨 Arbitrary Materials – Diffuse, Specular, Reflection & Refraction</h2>
-    <p>
-      The <strong>foo renders</strong> show different material types and surface interactions.  
-      Reflection and refraction were implemented recursively with bounded depth for realistic transparency and highlights.
-    </p>
+    <h2>🎨 Materials – Diffuse, Specular, Reflection & Refraction</h2>
+    <p>The <strong>foo</strong> renders demonstrate material variety and optical properties.</p>
     <div class="gallery">
-      <div class="item"><img src="foo.png" alt="Foo"></div>
-      <div class="item"><img src="foo1.png" alt="Foo1"></div>
-      <div class="item"><img src="foo2.png" alt="Foo2"></div>
+      <div class="item"><img src="images/foo.png"></div>
+      <div class="item"><img src="images/foo1.png"></div>
+      <div class="item"><img src="images/foo2.png"></div>
     </div>
   </div>
 
   <div class="section">
     <h2>💡 Point, Directional & Ambient Lighting</h2>
-    <p>
-      Lighting experiments with <strong>spotlights and directional lights</strong> were performed to evaluate diffuse and specular responses under multiple sources.
-    </p>
     <div class="gallery">
-      <div class="item"><img src="spot.png" alt="Spot Light 1"></div>
-      <div class="item"><img src="spot2.png" alt="Spot Light 2"></div>
+      <div class="item"><img src="images/spot.png"></div>
+      <div class="item"><img src="images/spot2.png"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🪶 Procedural Plane and Contrast Test</h2>
-    <p>
-      This render demonstrates the <strong>plane primitive</strong> and material contrast effects used for geometric calibration and shadow accuracy.
-    </p>
+    <h2>🪶 Plane & Contrast Test</h2>
     <div class="gallery">
-      <div class="item"><img src="plane_contrast.png" alt="Plane contrast"></div>
+      <div class="item"><img src="images/plane_contrast.png"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🎯 Sampling Techniques & Performance Comparison</h2>
-    <p>
-      The ray tracer was enhanced with <strong>adaptive and jittered sampling</strong>.  
-      The following images compare sampling quality and the time each method required.
-    </p>
+    <h2>🎯 Sampling Techniques & Render Time</h2>
     <div class="gallery">
-      <div class="item"><img src="no_sampling.png" alt="No Sampling"></div>
-      <div class="item"><img src="sampling_jitter.png" alt="Jittered Sampling"></div>
-      <div class="item"><img src="sampling_adaptive.png" alt="Adaptive Sampling"></div>
-      <div class="item"><img src="jitter_sampling_time.png" alt="Jitter Sampling Time"></div>
-      <div class="item"><img src="adaptive_time.png" alt="Adaptive Sampling Time"></div>
+      <div class="item"><img src="images/no_sampling.png" alt="No Sampling"></div>
+      <div class="item"><img src="images/sampling_jitter.png" alt="Jitter Sampling"></div>
+      <div class="item"><img src="images/sampling_adaptive.png" alt="Adaptive Sampling"></div>
+      <div class="item"><img src="images/jitter_sampling_time.png" alt="Jitter Sampling Time"></div>
+      <div class="item"><img src="images/adaptive_time.png" alt="Adaptive Sampling Time"></div>
     </div>
   </div>
 
   <div class="section">
-    <h2>🐉 Complex Scene – Dragon Model</h2>
-    <p>
-      The <strong>dragon scene</strong> tests the renderer’s ability to handle highly detailed geometry and many recursive light interactions.
-    </p>
+    <h2>🐉 Complex Scene – Dragon</h2>
     <div class="gallery">
-      <div class="item"><img src="dragon.png" alt="Dragon render"></div>
+      <div class="item"><img src="images/dragon.png"></div>
     </div>
   </div>
 
   <div class="section">
     <h2>🌀 Recursive Depth Control</h2>
-    <p>
-      Varying the <code>max_depth</code> parameter affects how many times rays bounce or refract.  
-      These <strong>spheres renders</strong> demonstrate depth-dependent reflection intensity and realism.
-    </p>
+    <p>The <strong>spheres</strong> renders illustrate how max recursion depth affects realism.</p>
     <div class="gallery">
-      <div class="item"><img src="spheres1.png" alt="Spheres depth test 1"></div>
-      <div class="item"><img src="spheres2.png" alt="Spheres depth test 2"></div>
+      <div class="item"><img src="images/spheres1.png"></div>
+      <div class="item"><img src="images/spheres2.png"></div>
     </div>
   </div>
 
@@ -194,4 +166,3 @@
   </footer>
 </body>
 </html>
-
